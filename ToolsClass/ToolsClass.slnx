@@ -1,2 +1,5 @@
 ﻿<Solution>
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="GMPR2512.Lesson1.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
 </Solution>
