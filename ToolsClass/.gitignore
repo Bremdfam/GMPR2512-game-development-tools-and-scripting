@@ -1,5 +1,6 @@
 .vscode/
-.Assets/ThirdParty
+/[Aa]ssets/ThirdParty
+
 .utmp/
 /[Ll]ibrary/
 /[Tt]emp/
