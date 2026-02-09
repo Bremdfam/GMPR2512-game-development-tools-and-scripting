@@ -109,6 +109,24 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftFlipper"",
+                    ""type"": ""Button"",
+                    ""id"": ""41b03ba0-1df5-4da9-bfbd-21f6821b1ccf"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightFlipper"",
+                    ""type"": ""Button"",
+                    ""id"": ""a61177b4-41de-4488-9ea6-982fa6f73e02"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -188,6 +206,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""55c175b6-d63b-4c83-9356-12331d6d580b"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftFlipper"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""12fd0a95-62ed-4bab-a853-7895af01a72b"",
+                    ""path"": ""<Keyboard>/rightShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightFlipper"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -198,6 +238,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_ActionToMove = m_Player.FindAction("ActionToMove", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_LeftFlipper = m_Player.FindAction("LeftFlipper", throwIfNotFound: true);
+        m_Player_RightFlipper = m_Player.FindAction("RightFlipper", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
@@ -280,6 +322,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_ActionToMove;
     private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_LeftFlipper;
+    private readonly InputAction m_Player_RightFlipper;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -299,6 +343,14 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Jump".
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/LeftFlipper".
+        /// </summary>
+        public InputAction @LeftFlipper => m_Wrapper.m_Player_LeftFlipper;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/RightFlipper".
+        /// </summary>
+        public InputAction @RightFlipper => m_Wrapper.m_Player_RightFlipper;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -331,6 +383,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @LeftFlipper.started += instance.OnLeftFlipper;
+            @LeftFlipper.performed += instance.OnLeftFlipper;
+            @LeftFlipper.canceled += instance.OnLeftFlipper;
+            @RightFlipper.started += instance.OnRightFlipper;
+            @RightFlipper.performed += instance.OnRightFlipper;
+            @RightFlipper.canceled += instance.OnRightFlipper;
         }
 
         /// <summary>
@@ -348,6 +406,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @LeftFlipper.started -= instance.OnLeftFlipper;
+            @LeftFlipper.performed -= instance.OnLeftFlipper;
+            @LeftFlipper.canceled -= instance.OnLeftFlipper;
+            @RightFlipper.started -= instance.OnRightFlipper;
+            @RightFlipper.performed -= instance.OnRightFlipper;
+            @RightFlipper.canceled -= instance.OnRightFlipper;
         }
 
         /// <summary>
@@ -402,5 +466,19 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "LeftFlipper" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLeftFlipper(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RightFlipper" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRightFlipper(InputAction.CallbackContext context);
     }
 }
